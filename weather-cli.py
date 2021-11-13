@@ -5,6 +5,9 @@ import requests
 import geocoder
 import json
 
+@click.group(help="CLI tool to check weather")
+def cli():
+    pass
 
 @click.command()
 def weatherForMe():
@@ -37,7 +40,7 @@ def weatherForLocation(location):
     tempsTime['weather'] = weather
     return click.echo(tempsTime)
 
-
+cli.add_command(weatherForMe)
+cli.add_command(weatherForLocation)
 if __name__ == '__main__':
-    weatherForLocation()
-    weatherForMe()
+    cli()
